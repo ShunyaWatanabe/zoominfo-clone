@@ -10,7 +10,7 @@ export function Calendar({ cliant }) {
     { time: "12am", taskName: "Quest Demo Call" },
   ];
   return (
-    <Paper elevation={3} sx={{ height: "700px", p: "10px" }}>
+    <Paper sx={{ height: "100%", p: "10px" }}>
       <Typography variant="h6">CARENDAR</Typography>
       <Typography variant="h5">Mon, Feb 13</Typography>
       <Grid container>

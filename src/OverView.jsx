@@ -12,7 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 export function OverView({ setSideAreaContent, cliant }) {
   return (
-    <Paper elevation={3} sx={{ height: "700px", p: "10px" }}>
+    <Paper sx={{ height: "100%", p: "10px" }}>
       <>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="h6" sx={{ fontWeight: "bold" }}>
