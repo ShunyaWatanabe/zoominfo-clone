@@ -17,6 +17,7 @@ import {
   CssBaseline,
   Grid,
   Stack,
+  Box,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SendIcon from "@mui/icons-material/Send";
@@ -231,19 +232,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Header />
-        <Paper
-          elevation={3}
-          sx={{
-            // width: "1400px",
-            // height: "700px",
-            flexGrow: 1,
-            m: 2,
-            position: "relative",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <Grid container alignItems="center" justify="center">
+          <Grid container alignItems="stretch" sx={{ flexGrow: 1, p: 2, overflowY: "auto" }}>
             <Grid
               item
               xs={sideArea ? 8 : 12}
@@ -251,39 +240,44 @@ function App() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                justifyContent: "flex-end",
+                overflowY: "auto",
+                height: "100%",
+                p: 2,
               }}
+              component={Paper}
             >
-              <Stack
-                sx={{
-                  width: "800px",
-                  overflow: "scroll",
-                  height: "550px",
-                }}
-              >
-                {messages.map((message) => {
-                  return (
-                    <Message
-                      key={message.id}
-                      message={message}
-                      messages={messages}
-                    />
-                  );
-                })}
-                {optionButtonsAreOpen ? (
-                  <div style={{ marginLeft: "90px" }}>
-                    <OptionButton onClick={() => optionClick()}>
-                      Show me top 3 contacts
-                    </OptionButton>
-                    <OptionButton>Block time to follow-up</OptionButton>
-                    <OptionButton>Help me prospect</OptionButton>
-                  </div>
-                ) : null}
-                <div id="bottom" />
-              </Stack>
+              <Box sx={{ maxWidth: "800px", overflowY: "auto" }}>
+                <Stack
+                  sx={{
+                    overflowY: "auto",
+                  }}
+                >
+                  {messages.map((message) => {
+                    return (
+                      <Message
+                        key={message.id}
+                        message={message}
+                        messages={messages}
+                      />
+                    );
+                  })}
+                  {optionButtonsAreOpen ? (
+                    <div style={{ marginLeft: "90px" }}>
+                      <OptionButton onClick={() => optionClick()}>
+                        Show me top 3 contacts
+                      </OptionButton>
+                      <OptionButton>Block time to follow-up</OptionButton>
+                      <OptionButton>Help me prospect</OptionButton>
+                    </div>
+                  ) : null}
+                  <div id="bottom" />
+                </Stack>
+              </Box>
               <TextField
                 fullWidth
                 margin="normal"
-                sx={{ width: "800px" }}
+                sx={{ maxWidth: "800px" }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -295,11 +289,10 @@ function App() {
                 }}
               />
             </Grid>
-            <Grid item xs={sideArea ? 4 : 0}>
+            <Grid item xs={sideArea ? 4 : 0} sx={{ pl: 2 }}>
               {sideArea}
             </Grid>
           </Grid>
-        </Paper>
       </ThemeProvider>
     </main>
   );
